@@ -1,0 +1,13 @@
+.navItem{
+
+padding: 5px 10px;
+border: 1px solid gray;
+
+}
+.navItem:hover{
+    background-color: lightskyblue;
+    cursor: pointer;
+}
+.navItem-title{
+
+}
