@@ -5,7 +5,7 @@ import Nav from './Nav';
 import User from './User';
 import Adduser from './Adduser';
 import Product from './Product';
-import AddProduct from './AddProduct';
+import ProductList from './ProductList';
 function App() {
   return (
     <div className="app">
@@ -17,7 +17,7 @@ function App() {
             <Route path='/' element={<User/>}></Route>
             <Route path='/user-list' element={<Adduser/>}></Route>
             <Route path='/product' element={<Product/>}></Route>
-            <Route path='/product-list' element={<AddProduct/>}></Route>
+            <Route path='/product-list' element={<ProductList/>}></Route>
           </Routes>
        
     </div>

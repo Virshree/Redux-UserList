@@ -1,7 +1,6 @@
 import React from 'react'
 import { useSelector } from 'react-redux';
-import './Adduser.css';
-import { selectUser } from './features/UserSlice';
+import { selectProduct } from './features/ProductSlice';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -10,36 +9,37 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import { makeStyles } from '@material-ui/core/styles';
-function Adduser() {
-  const user=useSelector(selectUser);
-  console.log(user);
-   const useStyles = makeStyles({
+import './ProductList.css';
+function ProductList() {
+  const product=useSelector(selectProduct);
+  console.log(product);
+  const useStyles = makeStyles({
   table: {
-     minWidth:900,
+     minWidth:660,
     
   },
 });
 const classes = useStyles();
   return (
-    <div>
-        <h1 style={{textAlign:"center"}}>User List</h1>
+    <div className='product-list'>
+      <h1 style={{textAlign:"center"}}>Product-List</h1>
        <TableContainer component={Paper}>
       <Table className={classes.table} aria-label="simple table">
         <TableHead>
           <TableRow>
-            <TableCell>Name</TableCell>
-            <TableCell >Email</TableCell>
+            <TableCell>Product</TableCell>
+            <TableCell >Is Available?</TableCell>
             
           </TableRow>
         </TableHead>
         <TableBody classes={classes.table}>
-          {user.map((row,i) => (
+          {product.map((row,i) => (
             <TableRow key={i} >
               <TableCell  scope="row">
-                {row.name}
+                {row.product}
               </TableCell>
         
-              <TableCell >{row.email}</TableCell>
+              <TableCell >{row.avail}</TableCell>
               
             </TableRow>
           ))}
@@ -50,4 +50,4 @@ const classes = useStyles();
   )
 }
 
-export default Adduser
+export default ProductList

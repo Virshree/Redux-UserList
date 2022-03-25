@@ -3,6 +3,10 @@ import { useDispatch } from 'react-redux';
 import './User.css'; 
 import {addUsers} from './features/UserSlice';
 import { useNavigate } from 'react-router-dom';
+import { Button } from '@material-ui/core';
+import TextField from '@material-ui/core/TextField';
+import { makeStyles } from '@material-ui/core/styles';
+
 function User() {
     const[name,setName]=useState("");
     const[email,setEmail]=useState("");
@@ -15,14 +19,23 @@ function User() {
       })) 
       navigate('/user-list')
     }
+    const useStyles = makeStyles((theme) => ({
+  root: {
+    '& > *': {
+      margin: theme.spacing(3),
+      width: '25ch',
+    },
+  },
+}));
+const classes = useStyles();
   return (
     <div className='user'>
         <h1>Add user</h1>
-        <div className='user-input'>
-            <input type="text"  value={name}   onChange={(e)=>setName(e.target.value)}placeholder='Name'/>
-             <input type="text"  value={email} onChange={(e)=>setEmail(e.target.value)} placeholder='Email'/>
+        <div className={classes.root}>
+             <TextField id="outlined-basic" value={name}  onChange={(e)=>setName(e.target.value)}   label="Name" variant="outlined" />
+              <TextField id="outlined-basic" value={email} onChange={(e)=>setEmail(e.target.value)}  label="Email" variant="outlined" />
         </div>
-        <button onClick={addUser}className='user-button'>Add </button>
+        <Button  variant='contained'  color='primary'onClick={addUser}className='user-button'>Add </Button>
         </div>
   )
 }
